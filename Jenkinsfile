@@ -1,13 +1,10 @@
 pipeline {
-  agent {label 'linux'}
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-  }
-  stages {
-    stage('build') {
-      steps {
-        sh 'php --version'
-      }
+    agent { docker { image 'php:8.1.0-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'php --version'
+            }
+        }
     }
-  }
 }
