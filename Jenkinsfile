@@ -4,7 +4,7 @@ pipeline {
         APP_NAME = 'My Symfony'
     }
     parameters {
-        booleanParam(name: 'isExecuteTests', default: true, description: 'Execute testing')
+        booleanParam(name: 'isExecuteTests', defaultValue: true, description: 'Execute testing')
     }
     stages {
         stage('build') {
