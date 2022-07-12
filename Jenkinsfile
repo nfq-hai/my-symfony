@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { docker { image 'python:3.10.1-alpine' } }
     environment {
         APP_NAME = 'My Symfony'
     }
@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "My App's name is ${APP_NAME}"
                 sh 'whoami'
-                sh 'docker -v'
+                sh 'python --version'
             }
         }
         stage('test') {
