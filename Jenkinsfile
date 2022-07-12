@@ -1,23 +1,27 @@
 pipeline {
     agent any
+    environment {
+        APP_NAME = 'My Symfony'
+    }
+    tools {
+
+    }
+    parameters {
+        booleanParam(name: 'isExecuteTests', default: true, description: 'Execute testing')
+    }
     stages {
         stage('build') {
             steps {
-                parallel(
-                    composer: {
-                        sh 'composer install --prefer-dist --optimize-autoloader'
-                        sh 'composer require --dev phpmetrics/phpmetrics friendsofphp/php-cs-fixer --no-interaction --prefer-dist --optimize-autoloader'
-                    },
-                    'prepare-dir': {
-                        sh 'rm -Rf ./build/'
-                        sh 'mkdir -p ./build/coverage'
-                        sh 'mkdir -p ./build/logs'
-                        sh 'mkdir -p ./build/phpmetrics'
-                    }
-                )
+                echo "My App's name is ${APP_NAME}"
+                sh 'composer install --prefer-dist --optimize-autoloader'
             }
         }
         stage('test') {
+            when {
+                expression {
+                    params.isExecuteTests
+                }
+            }
             steps {
                 echo 'testing'
             }
