@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "My App's name is ${APP_NAME}"
-                sh 'composer install --prefer-dist --optimize-autoloader'
+                sh '/usr/local/bin/composer install --prefer-dist --optimize-autoloader'
             }
         }
         stage('test') {
