@@ -10,6 +10,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "My App's name is ${APP_NAME}"
+                sh whoami
                 sh 'docker -v'
             }
         }
