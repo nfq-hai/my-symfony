@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "My App's name is ${APP_NAME}"
-                sh '/usr/local/bin/composer install --prefer-dist --optimize-autoloader'
+                sh 'docker -v'
             }
         }
         stage('test') {
