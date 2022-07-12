@@ -3,9 +3,6 @@ pipeline {
     environment {
         APP_NAME = 'My Symfony'
     }
-    tools {
-
-    }
     parameters {
         booleanParam(name: 'isExecuteTests', default: true, description: 'Execute testing')
     }
